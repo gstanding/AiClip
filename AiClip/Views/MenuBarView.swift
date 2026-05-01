@@ -18,7 +18,7 @@ struct MenuBarView: View {
             // Header
             HStack {
                 Image(systemName: "clipboard.fill")
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(Color.accentColor)
                 Text("AiClip")
                     .fontWeight(.semibold)
 

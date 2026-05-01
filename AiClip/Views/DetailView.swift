@@ -74,7 +74,7 @@ struct DetailView: View {
 
                 Image(systemName: item.contentType.icon)
                     .font(.title2)
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(Color.accentColor)
             }
 
             VStack(alignment: .leading, spacing: 4) {
@@ -184,7 +184,7 @@ struct DetailView: View {
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 4)
                                 .background(Color.accentColor.opacity(0.1))
-                                .foregroundStyle(.accent)
+                                .foregroundStyle(Color.accentColor)
                                 .clipShape(Capsule())
                         }
                     }

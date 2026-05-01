@@ -93,7 +93,7 @@ struct AiClipWidgetEntryView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Image(systemName: "clipboard.fill")
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(Color.accentColor)
                 Text("AiClip")
                     .font(.caption)
                     .fontWeight(.semibold)
@@ -125,7 +125,7 @@ struct AiClipWidgetEntryView: View {
         VStack(alignment: .leading, spacing: 6) {
             HStack {
                 Image(systemName: "clipboard.fill")
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(Color.accentColor)
                 Text("AiClip")
                     .font(.caption)
                     .fontWeight(.semibold)
@@ -143,7 +143,7 @@ struct AiClipWidgetEntryView: View {
                 HStack(spacing: 8) {
                     Image(systemName: clip.icon)
                         .font(.caption2)
-                        .foregroundStyle(.accent)
+                        .foregroundStyle(Color.accentColor)
                         .frame(width: 16)
 
                     Text(clip.content)
@@ -167,7 +167,7 @@ struct AiClipWidgetEntryView: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Image(systemName: "clipboard.fill")
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(Color.accentColor)
                 Text("AiClip - Recent Clips")
                     .font(.subheadline)
                     .fontWeight(.semibold)
@@ -185,7 +185,7 @@ struct AiClipWidgetEntryView: View {
                             .frame(width: 24, height: 24)
                         Image(systemName: clip.icon)
                             .font(.caption2)
-                            .foregroundStyle(.accent)
+                            .foregroundStyle(Color.accentColor)
                     }
 
                     VStack(alignment: .leading, spacing: 2) {
@@ -233,7 +233,7 @@ struct AiClipWidget: Widget {
 @main
 struct AiClipWidgetBundle: WidgetBundle {
     var body: some Widget {
-        AiClipWidget
+        AiClipWidget()
     }
 }
 
