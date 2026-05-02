@@ -14,6 +14,7 @@ settings:
     CURRENT_PROJECT_VERSION: "1"
     CODE_SIGN_STYLE: Automatic
     CODE_SIGN_IDENTITY: "Apple Development"
+    CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION: YES
 
 targets:
   AiClip:
@@ -31,8 +32,6 @@ targets:
         PRODUCT_NAME: AiClip
     dependencies:
       - target: AiClipWidgetExtension
-    entitlements:
-      path: AiClip/AiClip.entitlements
 
   AiClipWidgetExtension:
     type: app-extension
