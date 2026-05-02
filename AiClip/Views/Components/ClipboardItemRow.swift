@@ -38,23 +38,30 @@ struct ClipboardItemRow: View {
                     .foregroundStyle(.secondary)
                     .lineLimit(2)
 
-                HStack(spacing: 6) {
-                    // Tags
-                    ForEach(item.aiTags.prefix(3), id: \.self) { tag in
-                        Text(tag)
-                            .font(.caption2)
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 2)
-                            .background(Color.secondary.opacity(0.1))
-                            .clipShape(Capsule())
+                HStack(alignment: .center, spacing: 0) {
+                    // Tags (scrollable row, max 2 shown)
+                    HStack(spacing: 4) {
+                        ForEach(item.aiTags.prefix(2), id: \.self) { tag in
+                            Text(tag)
+                                .font(.caption2)
+                                .lineLimit(1)
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 2)
+                                .background(Color.secondary.opacity(0.1))
+                                .clipShape(Capsule())
+                        }
                     }
+                    .layoutPriority(0)
 
-                    Spacer()
+                    Spacer(minLength: 6)
 
-                    // Timestamp
+                    // Timestamp — fixed width, never compressed
                     Text(item.createdAt, style: .relative)
                         .font(.caption2)
                         .foregroundStyle(.tertiary)
+                        .lineLimit(1)
+                        .fixedSize(horizontal: true, vertical: false)
+                        .layoutPriority(1)
                 }
             }
 

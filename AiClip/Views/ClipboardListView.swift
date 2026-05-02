@@ -41,20 +41,23 @@ struct ClipboardListView: View {
     var body: some View {
         VStack(spacing: 0) {
             // Toolbar
-            HStack {
+            HStack(spacing: 8) {
                 Text("\(filteredItems.count) clips")
                     .font(.caption)
                     .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                    .fixedSize(horizontal: true, vertical: false)
 
-                Spacer()
+                Spacer(minLength: 4)
 
-                Picker("Sort", selection: $sortOrder) {
+                Picker("", selection: $sortOrder) {
                     ForEach(SortOrder.allCases, id: \.self) { order in
                         Text(order.rawValue).tag(order)
                     }
                 }
                 .pickerStyle(.menu)
                 .fixedSize()
+                .labelsHidden()
 
                 Button {
                     clipboardManager.toggleMonitoring()
@@ -65,7 +68,7 @@ struct ClipboardListView: View {
                 .buttonStyle(.plain)
                 .help(clipboardManager.isMonitoring ? "Pause monitoring" : "Resume monitoring")
             }
-            .padding(.horizontal)
+            .padding(.horizontal, 12)
             .padding(.vertical, 8)
 
             Divider()
