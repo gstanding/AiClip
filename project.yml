@@ -12,6 +12,8 @@ settings:
     SWIFT_VERSION: "5.9"
     MARKETING_VERSION: "1.0.0"
     CURRENT_PROJECT_VERSION: "1"
+    CODE_SIGN_STYLE: Automatic
+    CODE_SIGN_IDENTITY: "Apple Development"
 
 targets:
   AiClip:
@@ -43,6 +45,8 @@ targets:
         INFOPLIST_FILE: AiClipWidget/Info.plist
         GENERATE_INFOPLIST_FILE: false
         PRODUCT_NAME: AiClipWidgetExtension
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: "Apple Development"
 
   AiClipTests:
     type: bundle.unit-test
