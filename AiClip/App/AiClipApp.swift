@@ -4,6 +4,7 @@ import SwiftData
 @main
 struct AiClipApp: App {
     @StateObject private var clipboardManager = ClipboardManager()
+    @AppStorage("iCloudSyncEnabled") private var iCloudSyncEnabled = false
 
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -12,7 +13,7 @@ struct AiClipApp: App {
         let modelConfiguration = ModelConfiguration(
             schema: schema,
             isStoredInMemoryOnly: false,
-            cloudKitDatabase: .automatic
+            cloudKitDatabase: .none
         )
 
         do {

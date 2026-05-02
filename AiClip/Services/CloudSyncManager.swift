@@ -1,8 +1,6 @@
 import Foundation
-import CloudKit
 import Combine
 
-/// Manages iCloud sync status and conflict resolution
 final class CloudSyncManager: ObservableObject {
     @Published var syncStatus: SyncStatus = .idle
     @Published var lastSyncDate: Date?
@@ -20,15 +18,10 @@ final class CloudSyncManager: ObservableObject {
     }
 
     func checkiCloudStatus() {
-        CKContainer.default().accountStatus { [weak self] status, error in
-            DispatchQueue.main.async {
-                switch status {
-                case .available:
-                    self?.iCloudAvailable = true
-                default:
-                    self?.iCloudAvailable = false
-                }
-            }
+        if let token = FileManager.default.ubiquityIdentityToken {
+            iCloudAvailable = true
+        } else {
+            iCloudAvailable = false
         }
     }
 
@@ -36,8 +29,6 @@ final class CloudSyncManager: ObservableObject {
         guard iCloudAvailable else { return }
         syncStatus = .syncing
 
-        // SwiftData with CloudKit handles sync automatically
-        // This method provides manual trigger and status tracking
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             self?.syncStatus = .synced
             self?.lastSyncDate = Date()
